@@ -1,0 +1,43 @@
+.product-img{
+    width: 286px;
+    height: 286px;
+  padding: 7px;
+  border-radius: 20px;
+  
+}
+
+.product-name{
+    font-family: Lato;
+   font-size: 21px;
+   font-weight: 400px;
+   margin-top: 7px;
+} 
+.product-name {
+    margin-top: 0px;
+}
+p{
+    margin-top: -10px;
+    
+}
+.product-detail{
+    border: 1px solid #95A0A7;
+    width: 300px;
+  height: 508px;
+  border-radius: 8px;
+  position: relative;
+}
+.product-info{
+    padding: 15px;
+}
+button{
+    width: 100%;
+    background-color: #FFE0B3;
+    height: 48px;
+    border: none;
+    position: absolute;
+    bottom: 0;
+    border-radius: 0px 0px 8px 8px;
+}
+button:hover{
+    background-color: orange;
+}

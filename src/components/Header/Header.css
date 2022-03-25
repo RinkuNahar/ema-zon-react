@@ -1,0 +1,18 @@
+.header{
+    height: 80px;
+    background-color: black;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.header img{
+    margin-left: 145px;
+}
+.header a{
+    text-decoration: none;
+    color: white;
+    padding-left: 36px;
+}
+.link{
+    margin-right: 130px;
+}
