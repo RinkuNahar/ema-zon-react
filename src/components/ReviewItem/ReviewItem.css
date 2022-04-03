@@ -1,0 +1,29 @@
+.review-item{
+    border:1px solid darkblue;
+    width: 700px;
+    padding: 10px;
+    margin: 10px;
+    border-radius: 30px;
+    display: flex;
+}
+.review-item img{
+    width: 91px;
+
+}
+.details-container{
+    display: flex;
+    margin: 15px;
+  justify-content: space-between;
+}
+.delete-button button{
+ border: none;   
+ background-color: rgba(0, 255, 255, 0.258);
+ padding: 10px;
+ margin-left: 20px;
+ border-radius: 10px;
+ color: black;
+ cursor: pointer;
+}
+.icon{
+    margin-left: 10px;
+}
