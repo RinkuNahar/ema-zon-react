@@ -61,9 +61,9 @@ const handleAddToCart = (selectedProduct) =>{
            </div>
            <div className='order-container'>
             <Cart cart={cart}>
-            <Link to="/orders">
-               <button>Review Items</button>
-           </Link>
+                <Link to="/orders" className='review-button'>
+                     <button>Review Items</button>
+                 </Link>
             </Cart>
            </div>
         </div>

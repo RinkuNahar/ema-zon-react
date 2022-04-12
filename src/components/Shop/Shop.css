@@ -12,3 +12,9 @@
 .order-container{
     background-color: rgba(255, 153, 0, 0.3);
 }
+.review-button button{
+    border: none;
+    background-color: rgba(127, 170, 255, 0.353);
+    padding: 10px;
+    border-radius: 20px;
+}
