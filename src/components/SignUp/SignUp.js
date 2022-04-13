@@ -1,12 +1,17 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import './SignUp.css'
+import { Link, Navigate, useNavigate } from 'react-router-dom';
+import './SignUp.css';
+import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
+import auth from '../../firebase.init';
 const SignUp = () => {
 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
     const [error, setError] = useState('');
+    const [createUserWithEmailAndPassword, user] = useCreateUserWithEmailAndPassword(auth);
+    
+    const navigate = useNavigate();
 
     const handleEmailBlur = event =>{
         setEmail(event.target.value);
@@ -20,18 +25,24 @@ const SignUp = () => {
         setConfirmPassword(event.target.value);
     }
 
+    if(user){
+        navigate('/shop')
+    }
+
     const handleSubmitForm = event =>{
         event.preventDefault();
       if(password !== confirmPassword){
           setError('Your Password did not match');
           return;
       }
+    //   already have condition that min have to be 6 character in password
+      createUserWithEmailAndPassword(email, password);
     }
 
 
     return (
         <div className='form-container'>
-        <form action="" onSubmit={handleSubmitForm} >
+        <form  onSubmit={handleSubmitForm} >
         <div>
              <h2 className='title'>SignUp</h2>
               <div className='input-field'>
