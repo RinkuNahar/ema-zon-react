@@ -1,15 +1,17 @@
 import React, { useState } from 'react';
-import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
+import { useAuthState, useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import { Link } from 'react-router-dom';
 import auth from '../../firebase.init';
 
 const Shipment = () => {
+
+    const [user] =useAuthState(auth);
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
    const [address, setAddress] = useState('');
    const [phone, setPhone] = useState('');
     const [error, setError] = useState('');
-    const [createUserWithEmailAndPassword, user] = useCreateUserWithEmailAndPassword(auth);
+    
     
     // const navigate = useNavigate();
 
@@ -17,9 +19,6 @@ const Shipment = () => {
         setName(event.target.value);
     }
 
-    const handleEmailBlur = event =>{
-        setEmail(event.target.value);
-    }
 
     const handleAddressBlur = event =>{
         setAddress(event.target.value);
@@ -31,6 +30,8 @@ const Shipment = () => {
 
     const handleSubmitForm = event =>{
         event.preventDefault();
+        const shipping = {name, email, address, phone}
+        console.log(shipping);
     
     }
     return (
@@ -46,7 +47,7 @@ const Shipment = () => {
 
             <div className='input-field'>
                 <label htmlFor="email">Your Email </label>
-                <input onBlur={handleEmailBlur} type="email" name="email" id="" required/>
+                <input value={user?.email} readOnly type="email" name="email" id="" required/>
             </div>
                 <br />
 
@@ -58,7 +59,7 @@ const Shipment = () => {
 
             <div className='input-field'>
                 <label htmlFor="">Phone</label>
-                <input onBlur={handlePhoneBlur} type="text" name="name" id="" required/>
+                <input onBlur={handlePhoneBlur} type="number" name="name" id="" required/>
             </div>
             <br />
           
