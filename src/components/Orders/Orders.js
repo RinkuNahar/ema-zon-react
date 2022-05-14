@@ -5,37 +5,43 @@ import useProducts from '../../hooks/useProducts';
 import { removeFromDb } from '../../utilities/fakedb';
 import Cart from '../Cart/Cart'
 import ReviewItem from '../ReviewItem/ReviewItem';
-import './Orders.css'
+import './Orders.css';
+import PageTitle from '../PageTitle/PageTitle'
+
 const Orders = () => {
-    const [products, setProducts] = useProducts();
-    const [cart, setCart] = useCart(products);
-    
-  const handleRemoveProduct = product =>{
-    const rest = cart.filter(pd=>pd.id !== product.id);
+  const [products, setProducts] = useProducts();
+  const [cart, setCart] = useCart();
+
+  const handleRemoveProduct = product => {
+    const rest = cart.filter(pd => pd._id !== product._id);
     setCart(rest);
-    removeFromDb(product.id);
+    removeFromDb(product._id);
   }
-    
-    return (
-        <div className='main'>
+
+  return (
+    <div>
+
+      <PageTitle title="Orders"></PageTitle>
+      <div className='main'>
         <div className='review-container'>
-           {
-               cart.map(product=> <ReviewItem 
-                key={product.id}
-                 product={product}
-                  handleRemoveProduct={handleRemoveProduct}
-                  ></ReviewItem>)
-           }
+          {
+            cart.map(product => <ReviewItem
+              key={product._id}
+              product={product}
+              handleRemoveProduct={handleRemoveProduct}
+            ></ReviewItem>)
+          }
         </div>
         <div className='order-container'>
-       <Cart cart={cart}>
-                <Link to="/shipment">
-                    <button >Proceed CheckOut</button>
-               </Link>
-       </Cart>
+          <Cart cart={cart}>
+            <Link to="/shipment">
+              <button >Proceed CheckOut</button>
+            </Link>
+          </Cart>
         </div>
-     </div>
-    );
+      </div>
+    </div>
+  );
 };
 
 export default Orders;
